@@ -1,88 +1,114 @@
-# İçerik Üretici
+# 📝 İçerik Üretici
 
-Blog yazıları için otomatik içerik üretme aracı. Bu araç, verilen anahtar kelimeler ve başlıklar doğrultusunda SEO uyumlu blog içerikleri oluşturur.
+Bu proje, blog yazarları için yapay zeka destekli bir içerik üretme aracıdır. Anahtar kelimelerinizi girdiğinizde, SEO uyumlu blog yazıları otomatik olarak oluşturulur.
 
-## Gereksinimler
+## 🚀 Ne İşe Yarar?
 
-### Yazılımlar
-- [Cursor](https://cursor.sh/) - Geliştirme ortamı için
-- [AMPPS](https://ampps.com/downloads) - Yerel sunucu için
+- Blog yazılarınızı otomatik olarak oluşturur
+- SEO için meta başlıklar ve açıklamalar ekler
+- Alt başlıkları otomatik düzenler
+- İçerik analizini otomatik yapar (kelime sayısı, anahtar kelime kullanımı vb.)
+- Mobil uyumlu arayüz sunar
+- İki farklı AI servisi seçeneği sunar (Google Gemini veya OpenAI)
 
-### Teknik Gereksinimler
-- Node.js >= 18.0.0
-- NPM veya Yarn
-- En az bir API anahtarı:
-  - Google Gemini API anahtarı
-  - OpenAI API anahtarı (opsiyonel)
+## 💻 Kurulum İçin Gerekenler
 
-## Özellikler
+### 1. Programlar
+Bu projeyi çalıştırmak için aşağıdaki programları kurmanız gerekiyor:
 
-- Anahtar kelime odaklı içerik üretimi
-- SEO meta başlıkları ve açıklamaları
-- Alt başlık önerileri
-- İçerik analizi (kelime sayısı, başlık sayısı)
-- Responsive tasarım
-- Kolay kullanımlı arayüz
-- Esnek API kullanımı (Gemini veya GPT-4)
+- [📥 Cursor](https://cursor.sh/) 
+  * Modern bir kod editörüdür
+  * Yapay zeka destekli geliştirme ortamı sunar
+  * Ücretsizdir ve kolay kullanılır
 
-## Kurulum
+- [📥 AMPPS](https://ampps.com/downloads)
+  * Yerel sunucu programıdır
+  * PHP, MySQL ve Apache içerir
+  * Windows, Mac ve Linux için mevcuttur
 
+### 2. Teknik Gereksinimler
+- [Node.js](https://nodejs.org/) (Sürüm 18 veya üstü)
+- NPM (Node.js ile otomatik gelir) veya [Yarn](https://yarnpkg.com/)
+
+### 3. API Anahtarları
+En az bir API anahtarına ihtiyacınız var:
+
+- [Google Gemini API](https://makersuite.google.com/app/apikey) (Önerilen)
+  * Ücretsiz hesap açabilirsiniz
+  * Aylık belirli bir kotaya kadar ücretsizdir
+  * Hızlı ve güvenilirdir
+
+- [OpenAI API](https://platform.openai.com/api-keys) (İsteğe bağlı)
+  * Kredi kartı gerektirir
+  * Kullanım başına ücretlendirilir
+  * GPT-4 modelini kullanır
+
+## 📦 Nasıl Kurulur?
+
+1. Önce bu projeyi bilgisayarınıza indirin:
 ```bash
-# Repository'yi klonlayın
+# Terminal veya Komut İstemcisini açın
+# Projeyi indirin
 git clone https://github.com/yunuskorkmazcom/icerik-uretici.git
 
-# Proje dizinine gidin
+# Proje klasörüne gidin
 cd icerik-uretici
 
-# Bağımlılıkları yükleyin
+# Gerekli paketleri yükleyin
 npm install
+```
 
-# .env dosyasını oluşturun
+2. API anahtarlarını ayarlayın:
+```bash
+# Örnek dosyayı kopyalayın
 cp .env.example .env
 
-# .env dosyasını düzenleyip en az bir API anahtarı ekleyin
-# GEMINI_API_KEY=your_gemini_api_key_here
-# OPENAI_API_KEY=your_openai_api_key_here (opsiyonel)
+# .env dosyasını düzenleyin ve API anahtarlarınızı ekleyin:
+GEMINI_API_KEY=buraya_gemini_api_anahtarinizi_yazin
+OPENAI_API_KEY=buraya_openai_api_anahtarinizi_yazin  # İsteğe bağlı
+```
 
+3. Programı çalıştırın:
+```bash
 # Geliştirme sunucusunu başlatın
 npm run dev
 ```
 
-## API Anahtarları
+## 🎯 Nasıl Kullanılır?
 
-Bu projeyi çalıştırmak için en az bir API anahtarına ihtiyacınız var:
+1. Tarayıcınızda `http://localhost:3000` adresine gidin
+2. Anahtar kelimelerinizi girin (örnek: "dijital pazarlama, sosyal medya")
+3. İçerik uzunluğunu seçin (kısa, orta, uzun)
+4. Kullanmak istediğiniz AI servisini seçin (Gemini veya OpenAI)
+5. "İçerik Oluştur" butonuna tıklayın
+6. Oluşturulan içeriği gözden geçirin ve düzenleyin
+7. İsterseniz Word veya TXT olarak indirin
 
-1. **Google Gemini API** (Önerilen): [Google AI Studio](https://makersuite.google.com/app/apikey)'dan alabilirsiniz
-2. **OpenAI API** (Opsiyonel): [OpenAI Platform](https://platform.openai.com/api-keys)'dan alabilirsiniz
+## 🛠️ Kullanılan Teknolojiler
 
-API anahtarlarını aldıktan sonra `.env` dosyasına eklemeniz gerekiyor. En az bir API anahtarı gereklidir, ancak her ikisini de kullanabilirsiniz.
+- **Node.js**: Sunucu tarafı programlama
+- **Express.js**: Web sunucusu
+- **Bootstrap**: Mobil uyumlu arayüz
+- **Google Gemini API**: Yapay zeka servisi
+- **OpenAI API**: Alternatif yapay zeka servisi
 
-## Kullanım
+## ⚖️ Lisans
 
-1. Anahtar kelimeleri girin
-2. İçerik uzunluğunu seçin
-3. Kullanılabilir API'lerden birini seçin
-4. "İçerik Oluştur" butonuna tıklayın
-5. Oluşturulan içeriği düzenleyin
-6. Alt başlıkları yönetin
-7. İçeriği dışa aktarın
+Bu proje Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) lisansı altındadır.
 
-## Teknolojiler
+**❗ Önemli Not:** 
+- Bu projeyi ticari amaçlarla kullanamazsınız
+- Ücretsiz kullanım ve paylaşım için kaynak göstermeniz gerekir
+- Değişiklik yapıp paylaşabilirsiniz, ancak yine ticari olmayan amaçlarla
 
-- Node.js
-- Express.js
-- Bootstrap
-- Google Gemini API
-- OpenAI API (opsiyonel)
+[📜 Detaylı Lisans Bilgisi](https://creativecommons.org/licenses/by-nc/4.0/)
 
-## Lisans
+## 📞 Yardım ve İletişim
 
-Bu çalışma, Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) lisansı altında lisanslanmıştır.
+Sorularınız veya önerileriniz için:
+- GitHub: [Yunus Korkmaz](https://github.com/yunuskorkmaz23)
+- E-posta: [E-posta adresiniz]
 
-**Önemli Not:** Ticari kullanım yasaktır.
+## 🐛 Sorun Bildirme
 
-Daha fazla bilgi için: [Creative Commons Lisans Açıklaması](https://creativecommons.org/licenses/by-nc/4.0/)
-
-## İletişim
-
-Yunus Korkmaz - [GitHub](https://github.com/yunuskorkmaz23)
+Bir hata bulduysanız veya öneriniz varsa, lütfen GitHub üzerinden "Issues" bölümünden bildirin.
