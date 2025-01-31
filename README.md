@@ -72,7 +72,11 @@ API anahtarlarını aldıktan sonra `.env` dosyasına eklemeniz gerekiyor. En az
 
 ## Lisans
 
-MIT License
+Bu çalışma, Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) lisansı altında lisanslanmıştır.
+
+**Önemli Not:** Ticari kullanım yasaktır.
+
+Daha fazla bilgi için: [Creative Commons Lisans Açıklaması](https://creativecommons.org/licenses/by-nc/4.0/)
 
 ## İletişim
 
