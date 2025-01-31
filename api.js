@@ -16,7 +16,6 @@ H4: Başlık Metni
 - Yıldız (*)
 - Tire (-)
 - Bold (**)
-- Madde işaretleri
 - Numaralandırma
 
 HİYERARŞİ KURALLARI:
@@ -58,19 +57,67 @@ Kullanıcının belirttiği kriterlere uygun şekilde SEO uyumlu bir blog içeri
    - Mantıksal bir akış sağla
 
 SEO GEREKLİLİKLERİ:
-- Anahtar kelimeler doğal akış içinde, gereksiz tekrar olmadan kullanılmalı
-- Semantik SEO teknikleri uygulanarak LSI kelimeleri içeriğe entegre edilmeli
-- E-E-A-T prensiplerine uygun, uzmanlık ve güvenilirlik içeren bir içerik olmalı
-- Başlık (H1), alt başlıklar (H2, H3, H4) kullanıcının belirttiği hiyerarşide yapılandırılmalı
-- Öne çıkan snippet kazanabilecek şekilde net ve özetlenebilir cümleler içermeli
-- Google NLP uyumluluğu sağlanarak içerik, arama motorları tarafından kolayca anlaşılmalı
+- Anahtar kelimeler, içeriğin doğal akışına uygun şekilde yerleştirilmeli, spam algısı yaratmamalı.
+- Semantik SEO için LSI (Latent Semantic Indexing) kelimeleri içeriğe entegre edilmeli.
+- Başlık (H1) ve alt başlıklar (H2, H3, H4), kullanıcı arama niyetine uygun şekilde yapılandırılmalı.
+- Öne çıkan snippet kazanma şansı artırılmalı: Tanımlar, maddeleme veya doğrudan cevaplar içermeli.
+- Google NLP (Doğal Dil İşleme) uyumlu, kolay anlaşılabilir ve yapılandırılmış bir içerik oluşturulmalı.
 
 İÇERİK ÖĞELERİ:
 Kullanıcının seçimine göre şu öğeler eklenebilir:
-- Veri tablosu
-- İstatistikler
-- Sıkça sorulan sorular
-- Kaynakça`;
+
+1. Veri Tablosu:
+Amaç: Karşılaştırmalı veriler veya yapılandırılmış bilgileri sunmak.
+- En az 3 sütun ve 5 satırdan oluşan karşılaştırmalı tablo
+- Her sütun başlığı açıklayıcı olmalı
+- Veriler güncel olmalı
+
+2. İstatistikler:
+ Amaç: Güvenilir verilerle içeriği desteklemek.
+- En az 5 önemli istatistik bilgi
+- Her istatistik için kaynak yılı belirtilmeli
+- Mümkünse karşılaştırmalı veriler kullanılmalı
+
+3. Sık Sorulan Sorular:
+Amaç: Kullanıcıların en çok merak ettiği sorulara yanıt vermek.
+- En çok merak edilen 5 soru ve detaylı cevapları
+- Her soru "Soru: " ile başlamalı
+- Her cevap "Cevap: " ile başlamalı
+
+4. Kaynaklar:
+Amaç: İçeriği destekleyen güvenilir referanslar sunmak.
+- En az 5 güvenilir kaynak
+- Her kaynak için yazar adı, yayın yılı ve başlık bilgisi
+- Akademik yayınlar, resmi raporlar veya güvenilir web siteleri
+
+5. SEO Meta Bilgileri:
+ Amaç: İçeriğin arama motorlarında doğru şekilde indekslenmesini sağlamak.
+- SEO dostu meta başlık (60 karakter)
+- Meta açıklama (160 karakter)
+- 5 anahtar kelime önerisi
+
+6. Liste:
+ Amaç: İçeriğin okunabilirliğini artırmak.
+- Başlıklı, numaralandırılmış veya madde işaretli liste
+- En az 4-5 madde içermeli
+- Her madde kısa açıklama ile desteklenmeli
+Örnek Format:
+En Popüler [Konu] Türleri:
+1. [Tür Adı]
+2. [Tür Adı]
+3. [Tür Adı]
+4. [Tür Adı]
+
+7. Madde:
+ Amaç: İçeriğin içinde kritik bilgileri vurgulamak.
+- Paragraflar arasına serpiştirilmiş önemli noktalar
+- Her madde tek cümlelik önemli bilgi içermeli
+Örnek Format:
+• [Ürün/Konu] [özellik] bir yapıya sahiptir.
+• [Avantaj/özellik] sağlar.
+• [Önemli nokta] özelliğine sahiptir.
+
+NOT: Liste ve Madde seçenekleri aynı anda kullanılamaz, ikisinden biri seçilmelidir.`;
 
 // Gemini API ile alt başlık oluşturma
 async function generateHeadingsWithGemini(title, keywords, count) {
@@ -93,25 +140,12 @@ async function generateHeadingsWithGemini(title, keywords, count) {
                 maxOutputTokens: 1024,
                 topP: 1,
                 topK: 32
-            },
-            safetySettings: [{
-                category: "HARM_CATEGORY_HARASSMENT",
-                threshold: "BLOCK_NONE"
-            }, {
-                category: "HARM_CATEGORY_HATE_SPEECH",
-                threshold: "BLOCK_NONE"
-            }, {
-                category: "HARM_CATEGORY_SEXUALLY_EXPLICIT",
-                threshold: "BLOCK_NONE"
-            }, {
-                category: "HARM_CATEGORY_DANGEROUS_CONTENT",
-                threshold: "BLOCK_NONE"
-            }]
+            }
         };
 
         console.log('Gemini API isteği gönderiliyor...');
 
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${process.env.GEMINI_API_KEY}`, {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v2/models/gemini-pro:generateContent?key=${process.env.GEMINI_API_KEY}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -201,7 +235,7 @@ async function generateHeadingsWithGPT4(title, keywords, count) {
 // Gemini API ile içerik oluşturma
 async function generateContentWithGemini(formData) {
     try {
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`, {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v2/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -214,7 +248,9 @@ async function generateContentWithGemini(formData) {
                 }],
                 generationConfig: {
                     temperature: 0.7,
-                    maxOutputTokens: 8192
+                    maxOutputTokens: 8192,
+                    topP: 1,
+                    topK: 32
                 }
             })
         });
