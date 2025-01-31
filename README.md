@@ -102,7 +102,3 @@ Bu proje Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 
 - Değişiklik yapıp paylaşabilirsiniz, ancak yine ticari olmayan amaçlarla
 
 [📜 Detaylı Lisans Bilgisi](https://creativecommons.org/licenses/by-nc/4.0/)
-
-## 🐛 Sorun Bildirme
-
-Bir hata bulduysanız veya öneriniz varsa, lütfen GitHub üzerinden "Issues" bölümünden bildirin.
