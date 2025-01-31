@@ -1,4 +1,4 @@
-# Blog İçerik Üretici
+# İçerik Üretici
 
 Blog yazıları için otomatik içerik üretme aracı. Bu araç, verilen anahtar kelimeler ve başlıklar doğrultusunda SEO uyumlu blog içerikleri oluşturur.
 
@@ -24,10 +24,10 @@ Blog yazıları için otomatik içerik üretme aracı. Bu araç, verilen anahtar
 
 ```bash
 # Repository'yi klonlayın
-git clone https://github.com/yunuskorkmaz/blog-uretici.git
+git clone https://github.com/yunuskorkmaz23/icerik-uretici.git
 
 # Proje dizinine gidin
-cd blog-uretici
+cd icerik-uretici
 
 # Bağımlılıkları yükleyin
 npm install
@@ -76,4 +76,4 @@ MIT License
 
 ## İletişim
 
-Yunus Korkmaz - [GitHub](https://github.com/yunuskorkmaz) 
+Yunus Korkmaz - [GitHub](https://github.com/yunuskorkmaz23)
