@@ -4,6 +4,11 @@ Blog yazıları için otomatik içerik üretme aracı. Bu araç, verilen anahtar
 
 ## Gereksinimler
 
+### Yazılımlar
+- [Cursor](https://cursor.sh/) - Geliştirme ortamı için
+- [AMPPS](https://ampps.com/downloads) - Yerel sunucu için
+
+### Teknik Gereksinimler
 - Node.js >= 18.0.0
 - NPM veya Yarn
 - En az bir API anahtarı:
