@@ -303,53 +303,54 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Seçili içerik öğelerini al
     function getSelectedContentElements() {
-        const contentMapping = {
-            'dataTable': {
+        const contentElements = [
+            {
+                id: 'datatable',
+                type: 'datatable',
                 label: 'Veri Tablosu',
-                description: 'İçeriğe uygun veri tablosu ekle'
+                description: 'Konuyla ilgili önemli verileri içeren, en az 3 sütun ve 5 satırdan oluşan bir tablo oluştur. Her sütun başlığı açıklayıcı olmalı ve veriler güncel olmalıdır.'
             },
-            'statistics': {
+            {
+                id: 'statistics',
+                type: 'statistics',
                 label: 'İstatistikler',
-                description: 'İçerikle ilgili istatistiksel veriler ekle'
+                description: 'Konuyla ilgili en az 5 önemli istatistik bilgiyi listele. Her istatistik için kaynak yılını belirt ve mümkünse karşılaştırmalı veriler kullan.'
             },
-            'faq': {
-                label: 'Sıkça Sorulan Sorular',
-                description: 'Konu ile ilgili sık sorulan sorular ve cevapları ekle'
+            {
+                id: 'faq',
+                type: 'faq',
+                label: 'Sık Sorulan Sorular',
+                description: 'Konuyla ilgili en çok merak edilen 5 soruyu belirle ve detaylı cevaplar ver. Her soru "Soru: " ile başlamalı ve her cevap "Cevap: " ile başlamalı.'
             },
-            'references': {
-                label: 'Kaynakça',
-                description: 'Kullanılan kaynakları listele'
+            {
+                id: 'references',
+                type: 'references',
+                label: 'Kaynaklar',
+                description: 'En az 5 güvenilir kaynak belirt. Her kaynak için yazar adı (varsa), yayın yılı ve başlık bilgilerini içermeli. Kaynaklar akademik yayınlar, resmi raporlar veya güvenilir web siteleri olmalı.'
             },
-            'metaSeo': {
-                label: 'Meta Title ve Meta Açıklama',
-                description: 'İçeriğe göre SEO uyumlu meta title ve meta açıklama ekle'
+            {
+                id: 'seo',
+                type: 'seo',
+                label: 'SEO Meta Bilgileri',
+                description: 'İçerik için SEO dostu bir meta başlık (60 karakter), meta açıklama (160 karakter) ve 5 anahtar kelime öner. Meta bilgileri hedef kitleye ve arama motorlarına uygun olmalı.'
             },
-            'lists': {
-                label: 'Listeler',
-                description: 'İçerikte uygun yerlerde liste formatında bilgiler ekle'
+            {
+                id: 'orderedlist',
+                type: 'orderedlist',
+                label: 'Liste',
+                description: 'İçerikte konuyla ilgili başlıklı, numaralandırılmış veya madde işaretli bir liste oluştur. Örnek format:\n\nEn Popüler [Konu] Türleri:\n1. [Tür Adı]\n2. [Tür Adı]\n3. [Tür Adı]\n4. [Tür Adı]\n\nListe en az 4-5 madde içermeli ve her madde kısa bir açıklama ile desteklenebilir.'
             },
-            'bullets': {
+            {
+                id: 'bulletpoints',
+                type: 'bulletpoints',
                 label: 'Madde',
-                description: 'İçerikte uygun yerlerde madde işaretli listeler ekle'
-            },
-            'quotes': {
-                label: 'Alıntılar',
-                description: 'Konuyla ilgili önemli bir kişiden alıntı ekle'
-            },
-            'conclusion': {
-                label: 'Sonuç',
-                description: 'Sonuç bölümü ekle ve gerekiyorsa aksiyona yönlendir'
+                description: 'İçerikte önemli noktaları vurgulayan maddeler kullan. Bu maddeler paragraflar arasına serpiştirilmiş şekilde olmalı. Her madde tek cümlelik önemli bir bilgi içermeli. Örnek:\n• [Ürün/Konu] [özellik] bir yapıya sahiptir.\n• [Avantaj/özellik] sağlar.\n• [Önemli nokta] özelliğine sahiptir.'
             }
-        };
+        ];
         
-        return Object.entries(contentMapping)
-            .filter(([id]) => document.getElementById(id)?.checked)
-            .map(([id, config]) => ({
-                type: id,
-                label: config.label,
-                description: config.description,
-                required: true
-            }));
+        return contentElements.filter(element => 
+            document.getElementById(element.id)?.checked
+        );
     }
 
     // İçerik oluştur
@@ -544,11 +545,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         const apiEndpoint = formData.aiModel === 'gemini' ? '/api/generate-content-gemini' : '/api/generate-content-gpt4';
         
         try {
-            // FAQ seçili mi kontrol et
-            const hasFAQ = formData.contentElements.some(el => el.type === 'faq');
-            let faqContent = '';
-
-            // Ana içerik için request
             const response = await fetch(apiEndpoint, {
                 method: 'POST',
                 headers: {
@@ -558,9 +554,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     ...formData,
                     contentElements: formData.contentElements.map(element => ({
                         ...element,
-                        description: element.type === 'faq' ? 
-                            `Konuyla ilgili en çok merak edilen 5 soruyu belirle ve detaylı cevaplar ver. Her soru "Soru: " ile başlamalı ve her cevap "Cevap: " ile başlamalı.` :
-                            `${element.label} bölümü ekle ve içeriği zenginleştir`
+                        description: element.description
                     }))
                 })
             });
@@ -596,5 +590,29 @@ document.addEventListener('DOMContentLoaded', async () => {
             console.error('DOCX Dönüşüm Hatası:', error);
             throw new Error('DOCX dönüşümü başarısız oldu');
         }
+    }
+
+    // Liste ve Madde İşareti seçimlerini yönet
+    const orderedListCheckbox = document.getElementById('orderedlist');
+    const bulletPointsCheckbox = document.getElementById('bulletpoints');
+
+    if (orderedListCheckbox && bulletPointsCheckbox) {
+        orderedListCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                bulletPointsCheckbox.checked = false;
+                bulletPointsCheckbox.disabled = true;
+            } else {
+                bulletPointsCheckbox.disabled = false;
+            }
+        });
+
+        bulletPointsCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                orderedListCheckbox.checked = false;
+                orderedListCheckbox.disabled = true;
+            } else {
+                orderedListCheckbox.disabled = false;
+            }
+        });
     }
 }); 
