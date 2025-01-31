@@ -24,7 +24,7 @@ Blog yazıları için otomatik içerik üretme aracı. Bu araç, verilen anahtar
 
 ```bash
 # Repository'yi klonlayın
-git clone https://github.com/yunuskorkmaz23/icerik-uretici.git
+git clone https://github.com/yunuskorkmazcom/icerik-uretici.git
 
 # Proje dizinine gidin
 cd icerik-uretici
