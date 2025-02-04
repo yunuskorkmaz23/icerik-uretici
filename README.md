@@ -52,16 +52,15 @@ AMPPS programının kurulu olduğu dizinde www klasörüne yükleyin.
 
 3. Cursor programında sağ üste yer alan 2.butondan sağ sidebar açın. Agent modunda iken Cursor'a aşağıdaki metinleri sırasıyla yazın:
 
-# Gerekli paketleri yükleyin
+Gerekli paketleri yükleyin
 npm install
 
-# Örnek dosyayı kopyalayın
+Örnek dosyayı kopyalayın
 cp .env.example .env
 
-# .env dosyasını düzenleyin ve API anahtarlarınızı ekleyin:
+.env dosyasını düzenleyin ve API anahtarlarınızı ekleyin:
 GEMINI_API_KEY=buraya_gemini_api_anahtarinizi_yazin
 OPENAI_API_KEY=buraya_openai_api_anahtarinizi_yazin  # İsteğe bağlı
-
 
 3. Cursor programın aşağıdaki komutu yazın:
 npm run dev
