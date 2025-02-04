@@ -33,15 +33,16 @@ Bu projeyi çalıştırmak için aşağıdaki programları kurmanız gerekiyor:
 ### 3. API Anahtarları
 En az bir API anahtarına ihtiyacınız var:
 
-- [Google Gemini API](https://makersuite.google.com/app/apikey) (Önerilen)
+- [OpenAI API](https://platform.openai.com/api-keys) (Önerilen)
+  * Kredi kartı gerektirir
+  * Kullanım başına ücretlendirilir
+  * GPT-4 modelini kullanır
+
+- [Google Gemini API](https://makersuite.google.com/app/apikey) (İsteğe bağlı)
   * Ücretsiz hesap açabilirsiniz
   * Aylık belirli bir kotaya kadar ücretsizdir
   * Hızlı ve güvenilirdir
 
-- [OpenAI API](https://platform.openai.com/api-keys) (İsteğe bağlı)
-  * Kredi kartı gerektirir
-  * Kullanım başına ücretlendirilir
-  * GPT-4 modelini kullanır
 
 ## 📦 Nasıl Kurulur?
 
@@ -63,6 +64,7 @@ GEMINI_API_KEY=buraya_gemini_api_anahtarinizi_yazin
 OPENAI_API_KEY=buraya_openai_api_anahtarinizi_yazin  # İsteğe bağlı
 
 3. Cursor programın aşağıdaki komutu yazın:
+
 npm run dev
 
 ## 🎯 Nasıl Kullanılır?
