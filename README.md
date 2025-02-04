@@ -26,7 +26,7 @@ Bu projeyi çalıştırmak için aşağıdaki programları kurmanız gerekiyor:
   * PHP, MySQL ve Apache içerir
   * Windows, Mac ve Linux için mevcuttur
 
-### 2. Teknik Gereksinimler
+### 2. Teknik Gereksinimler (Cursor kurulumu yapacak ekstra kurulmasına gerek yoktur.)
 - [Node.js](https://nodejs.org/) (Sürüm 18 veya üstü)
 - NPM (Node.js ile otomatik gelir) veya [Yarn](https://yarnpkg.com/)
 
