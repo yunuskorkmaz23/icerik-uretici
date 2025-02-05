@@ -46,7 +46,7 @@ En az bir API anahtarına ihtiyacınız var:
 
 ## 📦 Nasıl Kurulur?
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/_h1HxCbFB1Q?si=6vbk5JG0GZEcNUXf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+[![YouTube](http://i.ytimg.com/vi/_h1HxCbFB1Q/hqdefault.jpg)](https://www.youtube.com/watch?v=_h1HxCbFB1Q)
 
 1. Önce bu projeyi bilgisayarınıza indirin:
 AMPPS programının kurulu olduğu dizinde www klasörüne yükleyin.
