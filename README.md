@@ -46,6 +46,8 @@ En az bir API anahtarına ihtiyacınız var:
 
 ## 📦 Nasıl Kurulur?
 
+Kurulum Videosu
+
 [![YouTube](http://i.ytimg.com/vi/_h1HxCbFB1Q/hqdefault.jpg)](https://www.youtube.com/watch?v=_h1HxCbFB1Q)
 
 1. Önce bu projeyi bilgisayarınıza indirin:
